@@ -1,0 +1,141 @@
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&extension=.js&callback=initMap"></script>
+
+<script src="maps.js"></script>
+<script>
+    function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+            center: {lat: 42, lng: -72},
+            zoom: 13
+        });
+        var input = /** @type {!HTMLInputElement} */(
+                document.getElementById('pac-input'));
+
+        var types = document.getElementById('type-selector');
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+        map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
+
+        var autocomplete = new google.maps.places.Autocomplete(input);
+        autocomplete.bindTo('bounds', map);
+
+        var infowindow = new google.maps.InfoWindow();
+        var marker = new google.maps.Marker({
+            map: map,
+            anchorPoint: new google.maps.Point(0, -29)
+        });
+
+        autocomplete.addListener('place_changed', function() {
+            infowindow.close();
+            marker.setVisible(false);
+            var place = autocomplete.getPlace();
+            if (!place.geometry) {
+                window.alert("Autocomplete's returned place contains no geometry");
+                return;
+            }
+
+            // If the place has a geometry, then present it on a map.
+            if (place.geometry.viewport) {
+                map.fitBounds(place.geometry.viewport);
+            } else {
+                map.setCenter(place.geometry.location);
+                map.setZoom(17);  // Why 17? Because it looks good.
+            }
+            marker.setIcon(/** @type {google.maps.Icon} */({
+                url: place.icon,
+                size: new google.maps.Size(71, 71),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(17, 34),
+                scaledSize: new google.maps.Size(35, 35)
+            }));
+            marker.setPosition(place.geometry.location);
+            marker.setVisible(true);
+
+            var address = '';
+            if (place.address_components) {
+                address = [
+                    (place.address_components[0] && place.address_components[0].short_name || ''),
+                    (place.address_components[1] && place.address_components[1].short_name || ''),
+                    (place.address_components[2] && place.address_components[2].short_name || '')
+                ].join(' ');
+            }
+
+            infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+            infowindow.open(map, marker);
+        });
+    }
+
+</script>
+
+<div class = "container" ng-controller = "EventController" style="padding: 10px 10px 10px 10px">
+<div class = "row">
+ <div class="col-md-6">
+       <h1 class = "page header"> {{model.event.title}} </h1>
+		<br>
+		</h2> By {{model.organizer.name}} </h2>
+        <p><span class="glyphicon glyphicon-time"></span> on {{model.event.Time}}</p>
+
+                <p class="lead">
+                   {{model.event.description}}
+                </p>
+                <br>
+                <h4> Tickets for Event: {{model.event.seats}}</h4>
+                <h4> Tickets available: {{model.event.seats}}</h4>
+                 <br>
+                 <br>
+                 <div ng-if="model.isuser">
+                        <button ng-click="model.registerForEvent()" type="submit" class="btn btn-success">Register Me for Event!</button>
+                 </div>
+                 <div ng-if="!model.isuser">
+                     <button type="submit" class="btn btn-success"><a href="#/eventupdate/{{model.eventId}}" style="color: white">Update this event</a></button>
+                 </div>
+
+
+</div>
+
+
+                
+	     <div class="col-md-6">
+             <div id="map"></div>
+             </div>
+      
+         </div>
+
+
+    <div class="row" style="padding-top: 10px">
+        <div class = "container">
+            <h3>Reviews :</h3>
+            <table class="table table-striped table-hover">
+                <tr ng-model = "model.event.newReviews">
+                    <td>
+                        <input ng-model="model.newreviews.reviewContent" type="text" class="form-control" id="inputText" placeholder="Add a Comment..">
+                    </td>
+                    <td>
+                        <div class="form-group">
+                            <label for="category" class="col-sm-5 control-label">Give it a rating:</label>
+                            <div class="col-sm-7">
+                                <select ng-model="model.newreviews.rating" class="form-control" id="category">
+                                    <option ng-value="1">1</option>
+                                    <option ng-value="2">2</option>
+                                    <option ng-value="3">3</option>
+                                    <option ng-value="4">4</option>
+                                    <option ng-value="5">5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </td>
+                    <td>
+                        <button ng-click="model.addReview()" type="submit" class="btn btn-info">Add Review</button>
+                    </td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="review in model.event.reviews">
+                    <td >{{review.reviewContent}}</td>
+                    <td>{{review.rating}}</td>
+                    <td></td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+    </div>
+	

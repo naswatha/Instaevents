@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="InstaEventsApp" >
+  <head>
+    <title>InstaEvents</title>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.5/flatly/bootstrap.min.css">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.5.5/css/ngDialog.min.css" rel="stylesheet">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.5.5/css/ngDialog-theme-default.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+   <link href="css/blog-post.css" rel="stylesheet">
+   <link href="css/style.css" rel="stylesheet">
+
+	 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+  	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular-route.min.js"></script>
+     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-bootstrap/0.10.0/ui-bootstrap-tpls.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/ng-dialog/0.5.5/js/ngDialog.min.js"></script>
+
+      <script src="http://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&extension=.js"></script>-
+
+      <script src="app.js"></script>
+    <script src="config.js"></script>
+
+      <!--Services-->
+    <script src="services/UserService.js"></script>
+    <script src="services/EventService.js"></script>
+      <script src="services/AuthService.js"></script>
+      <!--Controllers-->
+    <script src="views/home/home.controller.js"></script>
+   <script src="views/landing/landing.controller.js"></script>
+    <script src="views/header/header.controller.js"></script>
+    <script src="views/register/register.controller.js"></script>
+    <script src="views/profile/userprofile.controller.js"></script>
+    <script src="views/userhome/userhome.controller.js"></script>
+    <script src="views/orghome/orghome.controller.js"></script>
+    <script src="views/profile/orgprofile.controller.js"></script>
+    <script src="views/orgevents/orgevents.controller.js"></script>
+    <script src="views/eventcreation/eventcreation.controller.js"></script>
+     <script src="views/eventupdate/eventupdate.controller.js"></script>
+     <script src="views/event/event.controller.js"></script>
+
+      <style>
+          #map {
+              height: 400px;
+              width: 740px;
+          }
+
+          .infoWindowContent {
+              font-size: 14px !important;
+              border-top: 1px solid #ccc;
+              padding-top: 10px;
+          }
+
+          h2 {
+              margin-bottom: 0;
+              margin-top: 0;
+          }
+          .controls {
+              margin-top: 10px;
+              border: 1px solid transparent;
+              border-radius: 2px 0 0 2px;
+              box-sizing: border-box;
+              -moz-box-sizing: border-box;
+              height: 32px;
+              outline: none;
+              box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+          }
+
+          #pac-input {
+              background-color: #fff;
+              font-family: Roboto;
+              font-size: 15px;
+              font-weight: 300;
+              margin-left: 12px;
+              padding: 0 11px 0 13px;
+              text-overflow: ellipsis;
+              width: 300px;
+          }
+
+          #pac-input:focus {
+              border-color: #4d90fe;
+          }
+
+          .pac-container {
+              font-family: Roboto;
+          }
+
+          #type-selector {
+              color: #fff;
+              background-color: #4d90fe;
+              padding: 5px 11px 0px 11px;
+          }
+
+          #type-selector label {
+              font-family: Roboto;
+              font-size: 13px;
+              font-weight: 300;
+          }
+      </style>
+
+ </head>
+
+  <body>
+     <div ng-include src="'views/header/header.view.html'">
+     </div>
+
+
+
+  <div ng-view>
+
+  </div>
+
+
+  </body>
+</html>

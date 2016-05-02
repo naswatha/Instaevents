@@ -1,0 +1,111 @@
+<!--<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places&extension=.js&callback=initMap"></script>-->
+
+<!--<script type="text/javascript">-->
+<!--function geolocate() {-->
+<!--var address = (document.getElementById('eventAddr'));-->
+<!--var autocomplete = new google.maps.places.Autocomplete(address);-->
+<!--autocomplete.setTypes(['geocode']);-->
+<!--google.maps.event.addListener(autocomplete, 'place_changed', function() {-->
+<!--var place = autocomplete.getPlace();-->
+<!--if (!place.geometry) {-->
+<!--return;-->
+<!--}-->
+<!--document.getElementById('eventAddr').value = place.formatted_address;-->
+<!--geocoder = new google.maps.Geocoder();-->
+<!--var address = document.getElementById("eventAddr").value;-->
+<!--geocoder.geocode( { 'address': address}, function(results, status) {-->
+<!--if (status == google.maps.GeocoderStatus.OK) {-->
+<!--document.getElementById("latAddr").value=results[0].geometry.location.lat();-->
+<!--document.getElementById("lngAddr").value=results[0].geometry.location.lng();-->
+<!--}-->
+<!--else {-->
+<!--alert("Please enter valid address. For the following reason: " + status);-->
+<!--}-->
+<!--});-->
+<!--});-->
+<!--}-->
+<!--google.maps.event.addDomListener(window, 'load', geolocate);-->
+<!--</script>-->
+
+
+<div class ="col-sm-6 col-sm-offset-3 main boxed" ng-controller="EventUpdateController">
+
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <h3 class="panel-title">Update your Event:</h3>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputText" class="col-sm-3 control-label">Name of Event:</label>
+                    <div class="col-sm-6">
+                        <input ng-model="model.event.title" type="text" class="form-control" id="inputText" placeholder="{{model.event.title}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputText" class="col-sm-3 control-label">Event Description:</label>
+                    <div class="col-sm-6">
+                        <textarea ng-model="model.event.description" rows="4" cols="50" placeholder="{{model.event.description}}"></textarea>
+                    </div>
+                </div>
+                <!--<div class="form-group">-->
+                <!--<label for="inputText" class="col-sm-3 control-label">Location:</label>-->
+                <!--<div class="col-sm-6">-->
+                <!--<input ng-model="model.event.eventLocation.address" type="text" class="form-control" id="eventAddr" placeholder="Enter your address"-->
+                <!--onFocus="geolocate()" >-->
+                <!--<div hidden><input ng-model="model.eventLocation.lat"  id="latAddr"></div>-->
+                <!--<div hidden><input ng-model="model.eventLocation.long"  id="lngAddr"></div>-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Event Category:</label>
+                    <div class="col-sm-6">
+                        <select ng-model="model.event.type" class="form-control" style="width:100%">
+                            <option value="ART">ART</option>
+                            <option value="MOVIE">MOVIE</option>
+                            <option value="MUSIC">MUSIC</option>
+                            <option value="FOOD">FOOD</option>
+                            <option value="SOCIAL">SOCIAL</option>
+                            <option value="OUTDOOR">OUTDOOR</option>
+                            <option value="CHARITY">CHARITY</option>
+                            <option value="LECTURE">LECTURE</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InputDate" class="col-sm-3 control-label">Event Date</label>
+                    <div class="col-sm-6">
+                        <input ng-model="model.event.Date" type="date" class="form-control" id="InputDate" placeholder="{{model.event.date}}" multiple>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InputDate" class="col-sm-3 control-label">Event Time:</label>
+                    <div class="col-sm-6">
+                        <input ng-model="model.event.Time" type="time" class="form-control" id="InputTime" placeholder="{{model.event.time}}" multiple>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputText2" class="col-sm-3 control-label">Number of Seats/Tickets:</label>
+                    <div class="col-sm-6">
+                        <input ng-model="model.event.seats" type="text" class="form-control" id="inputText2" placeholder="{{model.event.seats}}">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputText1" class="col-sm-3 control-label">Ticket Cost:</label>
+                    <div class="col-sm-6">
+                        <input ng-model="model.event.price" type="text" class="form-control" id="inputText1" placeholder="{{model.event.price}}">
+                    </div>
+                </div>
+                <div class="createbutton form-group">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <a ng-click="model.update()" class="btn btn-success btn-lg btn-block" role="button" href="#/orgevents">Update My Event!</a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,20 @@
+<div class = "container col-sm-6 col-sm-offset-3 main boxed">
+
+<table class="table table-striped" ng-controller="OrganizerEventController">
+<tr ng-repeat="event in model.events">
+        <td>
+           <h2><a href="#/organizer/{{model.organizer._id}}/event/{{event._id}}">{{event.title}}</a></h2>
+		</td>
+        <td>
+            <button class="btn btn-primary">
+               <a href="#/eventupdate/{{event._id}}"><span class="glyphicon glyphicon-pencil"></span></a>
+            </button>
+                     <button ng-click="model.deleteEvent(event._id)"
+                    class="btn btn-primary">
+                <span class="glyphicon glyphicon-remove"></span>
+            </button>
+        </td>
+    </tr>
+</table>
+
+</div>

@@ -1,0 +1,53 @@
+  <!-- Navigation -->
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation" ng-controller="HeaderController as model">
+           <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+               <a class="navbar-brand" href="#" style="font-size: x-large ; padding-bottom: 5px">Instaevents</a>
+            </div>
+
+            <div ng-if="!user" class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li><a href="#/landing">Home <span class="sr-only">(current)</span></a></li>
+                     <li><a href="#/home">Look For Events </a></li>
+                 </ul>
+                <form class="navbar-form navbar-right">
+                  <div class = "row">
+                    <div class="form-group">
+                        <input ng-model="model.user.email" type="text" placeholder="Email" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <input ng-model="model.user.password" type="password" placeholder="Password" class="form-control">
+                    </div>
+                      <button ng-click="model.verify()" type="submit" class="btn btn-success"> Sign in</button>
+                      <a href="#/register" class="btn btn-success">Sign Up</a>
+                  </div>
+                    <div class = "row">
+                        <div class="checkbox">
+                            <label style="color: white">
+                                <input type="checkbox" ng-click="model.stateChanged()">  Are you an organizer?
+                            </label>
+                        </div>
+                        </div>
+
+                </form>
+            </div>
+            <div ng-if="user" class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+                  <ul class="nav navbar-nav">
+                    <li><a href="#/landing">Home <span class="sr-only">(current)</span></a></li>
+                     <li><a href="#/home">Look For Events </a></li>
+                      <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Me <span class="caret"></span></a>
+                          <ul class="dropdown-menu" role="menu">
+                              <li><a ng-click="model.goHome()">My Home </a></li>
+                              <li><a ng-click="model.checkProfile()">My profile</a></li>
+                          </ul>
+                      </li>
+                 </ul>
+                <form class="nav navbar-nav navbar-right">
+                    <button ng-click="model.logout()" type="submit" class="btn btn-warning">Logout</button>
+
+                </form>
+        </div>
+        <!-- /.container -->
+    </nav>
+    

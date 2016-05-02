@@ -1,0 +1,50 @@
+<div class = "col-sm-6 col-sm-offset-3 main boxed"  ng-controller="RegisterController">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h3 class="panel-title">Register here and make your events a success!</h3>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputText" class="col-sm-3 control-label">Name:</label>
+                    <div class="col-sm-6">
+                        <input ng-model="model.regorg.name" type="text" class="form-control" id="inputText" placeholder="Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail" class="col-sm-3 control-label">Email:</label>
+                    <div class="col-sm-6">
+                        <input ng-model="model.regorg.email" type="email" class="form-control" id="inputEmail" placeholder="Email">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-sm-3 control-label">Password:</label>
+                    <div class="col-sm-6">
+                        <input ng-model="model.regorg.password" type="password" class="form-control" id="inputPassword" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputPassword" class="col-sm-3 control-label">Verify Password:</label>
+                    <div class="col-sm-6">
+                        <input ng-model="model.verifypassword" type="password" class="form-control" placeholder="Password">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputNumber" class="col-sm-3 control-label">Contact Number:</label>
+                    <div class="col-sm-6">
+                        <input ng-model="model.regorg.number" type="number" class="form-control" id="inputNumber" placeholder="Tel No.">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <a ng-click="model.registerorg(model.regorg)" class="btn btn-primary btn-lg btn-block" role="button">Register</a>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    </div>  
+    

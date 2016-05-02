@@ -1,0 +1,21 @@
+[
+  {
+    "id":"121212",
+    "name":"Starbucks",
+    "email":"sb@gmail.com",
+    "password":"frapuccino",
+    "createdEventIds" :[],
+    "events":[
+      "123", "23-1"
+    ]
+  },
+
+  {
+    "id":"13131383",
+    "firstName": "John",
+    "lastName": "Doe",
+    "organizer": false,
+    "email":"jdoe@gmail.com",
+    "password":"doe"
+  }
+]

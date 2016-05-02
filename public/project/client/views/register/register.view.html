@@ -1,0 +1,64 @@
+ <div align = "center" ng-controller="RegisterController">
+
+<div class = "container col-sm-9 main boxed">
+     <div class="panel panel-success ">
+         <div class="panel-heading">
+             <h3 class="panel-title" align="center">Register Here!</h3>
+         </div>
+         <div class="panel-body">
+             <form class="form-horizontal">
+                 <div class="form-group">
+                     <label for="inputText" class="col-sm-3 control-label">First Name:</label>
+                     <div class="col-sm-6">
+                         <input ng-model="model.reguser.name.firstName" type="text" class="form-control" id="inputText" placeholder="Firstname">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label for="inputText" class="col-sm-3 control-label">Last Name:</label>
+                     <div class="col-sm-6">
+                         <input ng-model="model.reguser.name.lastName" type="text" class="form-control" id="inputText" placeholder="Lastname">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label for="inputEmail" class="col-sm-3 control-label">Email:</label>
+                     <div class="col-sm-6">
+                         <input ng-model="model.reguser.email" type="email" class="form-control" id="inputEmail" placeholder="Email">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label for="inputPassword" class="col-sm-3 control-label">Password:</label>
+                     <div class="col-sm-6">
+                         <input ng-model="model.reguser.password" type="password" class="form-control" id="inputPassword" placeholder="Password">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <label for="inputPassword" class="col-sm-3 control-label">Verify Password:</label>
+                     <div class="col-sm-6">
+                         <input ng-model="model.verifypassword" type="password" class="form-control" placeholder="Password">
+                     </div>
+                 </div>
+                 <div class="form-group">
+                     <div class="col-sm-offset-3 col-sm-6">
+                         <a ng-click="model.register(model.reguser)" class="btn btn-primary btn-lg btn-block" role="button">Register</a>
+                     </div>
+                 </div>
+             </form>
+         </div>
+     </div>
+</div>
+
+     <div class="container col-sm-3 boxed">
+         <div class="panel panel-info">
+             <div class="panel-heading">
+                 <h3 class="panel-title">Are you an Event Organizer? Sign Up here!</h3>
+             </div>
+             <div class="panel-body">
+                 <p> Looking to announce your event to our community of users? Its easy! Sign up here and post events and sell tickets! </p>
+                 <div class="col-sm-9" align = "center">
+                     <a class="btn btn-success btn-lg btn-warning" role="button" href = "#/orgreg">Sign Up Here!</a>
+                 </div>
+             </div>
+         </div>
+     </div>
+
+    </div>

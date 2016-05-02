@@ -1,0 +1,188 @@
+
+    <script>
+       function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: {lat: 42, lng: -72},
+                zoom: 13
+            });
+            var input = /** @type {!HTMLInputElement} */(
+                    document.getElementById('pac-input'));
+
+            var types = document.getElementById('type-selector');
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+            map.controls[google.maps.ControlPosition.TOP_LEFT].push(types);
+
+            var autocomplete = new google.maps.places.Autocomplete(input);
+            autocomplete.bindTo('bounds', map);
+
+            var infowindow = new google.maps.InfoWindow();
+            var marker = new google.maps.Marker({
+                map: map,
+                anchorPoint: new google.maps.Point(0, -29)
+            });
+
+            autocomplete.addListener('place_changed', function() {
+                infowindow.close();
+                marker.setVisible(false);
+                var place = autocomplete.getPlace();
+                if (!place.geometry) {
+                    window.alert("Autocomplete's returned place contains no geometry");
+                    return;
+                }
+
+                // If the place has a geometry, then present it on a map.
+                if (place.geometry.viewport) {
+                    map.fitBounds(place.geometry.viewport);
+                } else {
+                    map.setCenter(place.geometry.location);
+                    map.setZoom(17);  // Why 17? Because it looks good.
+                }
+                marker.setIcon(/** @type {google.maps.Icon} */({
+                    url: place.icon,
+                    size: new google.maps.Size(71, 71),
+                    origin: new google.maps.Point(0, 0),
+                    anchor: new google.maps.Point(17, 34),
+                    scaledSize: new google.maps.Size(35, 35)
+                }));
+                marker.setPosition(place.geometry.location);
+                marker.setVisible(true);
+
+                var address = '';
+                if (place.address_components) {
+                    address = [
+                        (place.address_components[0] && place.address_components[0].short_name || ''),
+                        (place.address_components[1] && place.address_components[1].short_name || ''),
+                        (place.address_components[2] && place.address_components[2].short_name || '')
+                    ].join(' ');
+                }
+
+                infowindow.setContent('<div><strong>' + place.name + '</strong><br>' + address);
+                infowindow.open(map, marker);
+            });
+        }
+       google.maps.event.addDomListener(window, 'load', initMap);
+    </script>
+    <!-- Page Content -->
+        <div class="container" ng-controller="HomeController">
+
+            <div class="row">
+
+                <!-- Blog Post Content Column -->
+                <div class="col-lg-8">
+
+                    <!-- Blog Post -->
+
+                    <!-- Title -->
+                    <h1>Search for your favourite events</h1>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Search for an event...">
+                                  <span class="input-group-btn">
+                                    <button class="btn btn-success" type="button">Go!</button>
+                                  </span>
+                            </div><!-- /input-group -->
+                        </div><!-- col-lg-4 -->
+                    </div><!-- row -->
+                    </br>
+
+                    <div class="input-group">
+
+
+                        <div id="type-selector" >
+                        <label for="pac-input">Enter a location</label>
+                            <input id="pac-input" class="form-controls" type="text"
+                                   placeholder="Enter a location" height="200px" >
+                            </div>
+                        <div id="map"></div>
+
+                    </div>
+
+                    <!-- Blog Comments -->
+                    <br>
+                    <!-- Comments Form -->
+                    <div  class="well">
+                        <h4>Events around you:</h4>
+                    </div>
+                      <div class="well">
+
+                    </div>
+
+                    <hr>
+                    <table class="table table-striped">
+                        <tr ng-repeat="event in model.events">
+                            <td ><a href="#/organizer/{{model.organizer._id}}/event/{{event._id}}">{{event.title}}</a>
+                                <br>
+                                {{event.description}}
+                            </td>
+                            <td>{{event.reviews.rating}} </td>
+                        </tr>
+                    </table>
+                    <!-- Posted Comments -->
+
+                    <!-- Comment -->
+
+
+                </div>
+
+                <!-- Blog Sidebar Widgets Column -->
+                <div class="col-md-4" style="padding-top: 50px">
+
+                    <!-- Blog Search Well -->
+                    <div class="panel panel-success">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">Set your Preferences</h3>
+                            </div>
+                            <div class="panel-body">
+                                 <form class="form-horizontal">
+                                      <div class="form-group">
+                                           <label for="category" class="col-sm-5 control-label">Event Category :</label>
+                                               <div class="col-sm-7">
+                                                     <select class="form-control" id="category">
+                                                      <option>Movie</option>
+                                                      <option>Music</option>
+                                                      <option>Art</option>
+                                                      <option>Social</option>
+                                                      <option>Workshops</option>
+                                                      </select>
+                                                </div>
+                                      </div>
+                                      <br>
+                                     <div class="form-group">
+                                         <label for="proximity" class="col-sm-5 control-label">Proximity</label>
+                                         <div class="col-sm-7">
+                                             <select class="form-control" id="proximity">
+                                                 <option>1 Mile</option>
+                                                 <option>2 Mile</option>
+                                                 <option>5 Mile</option>
+                                                 <option>10 Mile</option>
+                                                 <option>20 Mile</option>
+                                             </select>
+                                         </div>
+                                     </div>
+                                     <br>
+                                     <div class="form-group">
+                                         <label for="price" class="col-sm-5 control-label">Price Range</label>
+                                         <div class="col-sm-7">
+                                             <select class="form-control col-sm-6" id="price">
+                                                 <option>$</option>
+                                                 <option>$$</option>
+                                                 <option>$$$</option>
+                                             </select>
+                                         </div>
+                                     </div>
+                                     <br>
+
+                                      <div class="form-group" >
+                                          <div class="col-sm-7 col-sm-offset-5">
+                                          <button type="searchEvent" class="btn btn-info btn-m" align = "center"> Search Event </button>
+                                      </div>
+                                          </div>
+                                     </form>
+                                 </div>
+                                    </div>
+
+
+            <hr>
+     </div>
+        <!-- /.container -->

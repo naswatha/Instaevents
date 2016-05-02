@@ -1,0 +1,84 @@
+
+
+<div class ="col-sm-6 col-sm-offset-3 main boxed" ng-controller="EventCreationController as  model">
+
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <h3 class="panel-title">Create your Event:</h3>
+        </div>
+        <div class="panel-body">
+            <form class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputText" class="col-sm-3 control-label">Name of Event:</label>
+                    <div class="col-sm-6">
+                        <input ng-model="model.event.title" type="text" class="form-control" id="inputText" placeholder="Eventname">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputText" class="col-sm-3 control-label">Event Description:</label>
+                    <div class="col-sm-6">
+                        <textarea rows="4" cols="50"></textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputText" class="col-sm-3 control-label">Location:</label>
+                    <div class="col-sm-6">
+                        <input ng-model="model.event.eventLocation.address" type="text" class="form-control" id="eventAddr" placeholder="Enter your address"
+
+                               ng-change="model.geolocate()" >
+                        <div hidden><input type="text" class="form-control" id="latAddr"></div>
+                        <div hidden><input type="text" class="form-control" id="lngAddr"></div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-3 control-label">Event Category:</label>
+                    <div class="col-sm-6">
+                        <select ng-model="model.event.type" class="form-control" style="width:100%">
+                            <option value="ART">ART</option>
+                            <option value="MOVIE">MOVIE</option>
+                            <option value="MUSIC">MUSIC</option>
+                            <option value="FOOD">FOOD</option>
+                            <option value="SOCIAL">SOCIAL</option>
+                            <option value="OUTDOOR">OUTDOOR</option>
+                            <option value="CHARITY">CHARITY</option>
+                            <option value="LECTURE">LECTURE</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InputDate" class="col-sm-3 control-label">Event Date</label>
+                    <div class="col-sm-6">
+                        <input ng-model="model.event.date" type="date" class="form-control" id="InputDate" placeholder="Select Date" multiple>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InputDate" class="col-sm-3 control-label">Event Time:</label>
+                    <div class="col-sm-6">
+                        <input ng-model="model.event.time" type="time" class="form-control" id="InputTime" placeholder="Select Time" multiple>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputText2" class="col-sm-3 control-label">Number of Seats/Tickets:</label>
+                    <div class="col-sm-6">
+                        <input ng-model="model.event.seats" type="text" class="form-control" id="inputText2" placeholder="Tickets">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputText1" class="col-sm-3 control-label">Ticket Cost:</label>
+                    <div class="col-sm-6">
+                        <input ng-model="model.event.price" type="text" class="form-control" id="inputText1" placeholder="$xxx">
+                    </div>
+                </div>
+                <div class="createbutton form-group">
+                    <div class="col-sm-offset-3 col-sm-6">
+                        <a ng-click="model.create()" class="btn btn-success btn-lg btn-block" role="button">Create My Event!</a>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+

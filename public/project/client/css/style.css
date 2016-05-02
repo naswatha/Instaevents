@@ -1,0 +1,86 @@
+#map-container { height: 300px }
+#map-container { width: 750px }
+  
+  
+div .userreg{
+  color: black;
+  background-color: lightskyblue;
+  top: 50%;
+  left: 5%
+ }
+
+div .orgreg{
+    color: black;
+  background-color: lightsalmon;
+  right: 10%;
+ float: right;
+}
+
+div .orgregister{
+  color: black;
+  background-color: #FFFF99;
+  top: 50%;
+  left:25%;
+  
+}
+
+div .createbutton{
+   top: 5%;
+}
+
+div .create-event{
+  float: right;
+}
+
+ .preflist{
+            padding: 30px 30px 30px 30px;
+        }
+        
+.carousel .item {
+  top: 0;
+  height: 600px;
+}
+.carousel img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  max-height: 600px;
+}
+
+.carousel h4 {
+  font-style: italic;
+  right:10px;
+  bottom:50px;
+  left:10px;
+  font-size: 8mm
+}
+
+
+div .aboutus{
+ padding: 20px
+}
+
+.ngdialog.ngdialog-theme-default .ngdialog-button.ngdialog-button-primary {
+    background: #009933;
+    color: #fff;
+}
+
+.ngdialog.ngdialog-theme-default .ngdialog-button.ngdialog-button-primary:hover {
+    background: #006622;
+
+}
+
+.ngdialog.ngdialog-theme-default .ngdialog-button.ngdialog-button-primary:disabled{
+    background: rgba(0, 153, 51, 0.50);
+}
+
+.ngdialog.ngdialog-theme-default .ngdialog-button.ngdialog-button-secondary {
+    background: #cc0000;
+    color: #fff;
+}
+
+.ngdialog.ngdialog-theme-default .ngdialog-button.ngdialog-button-secondary:hover {
+    background: #990000;
+
+}
